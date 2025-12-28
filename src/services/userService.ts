@@ -1,4 +1,8 @@
 import { workos } from "../config/workos";
+
+type PasswordHashType = "bcrypt" | "argon2" | "scrypt";
+
+
 interface CreateUserDTO {
     email: string;
     password: string;
@@ -13,7 +17,7 @@ interface UpdateUserDTO {
     lastName?: string;
     password?: string;
     passwordHash?: string;
-    passwordHashType?: string;
+    passwordHashType?: PasswordHashType;
     externalId?: string;
     metadata?: Record<string, string>;
 }
@@ -27,10 +31,7 @@ export const createUserService = async (userData: CreateUserDTO) => {
     }
 
     const user = await workos.userManagement.createUser({
-        email,
-        password,
-        firstName,
-        lastName,
+        ...userData,
     });
     return user;
 };
