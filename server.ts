@@ -5,6 +5,7 @@ import express from "express";
 import organizationRoute from "./src/routes/organizationRoute";
 import userRoute from "./src/routes/usersRoute";
 import roleRoute from "./src/routes/roleRoute";
+import organizationMemberRoute from "./src/routes/organizationMemberRoute";
 
 
 
@@ -19,6 +20,8 @@ app.use("/api", organizationRoute);
 app.use("/api", userRoute);
 
 app.use("/api", roleRoute); 
+
+app.use("/api", organizationMemberRoute);
 
 
 app.listen(PORT, () => {
