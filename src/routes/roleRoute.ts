@@ -3,6 +3,7 @@ import { fetchRoles } from "../controllers/roleController";
 const rolesRoute = reoute.Router();
 
 
-rolesRoute.get("/roles", fetchRoles)
+rolesRoute.get("/roles/:organizationId", fetchRoles);
+
 
 export default rolesRoute;
